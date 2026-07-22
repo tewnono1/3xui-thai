@@ -49,7 +49,25 @@ show_menu() {
     echo -e "--------------------------------------------------------"
     echo
     read -p "กรุณาเลือกเมนูที่ต้องการ [0-28]: " choice
+
+    case $choice in
+        1)
+            bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/main/install.sh)
+            ;;
+        2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28)
+            bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/main/install.sh)
+            ;;
+        0)
+            exit 0
+            ;;
+        *)
+            echo -e "${red}กรุณาเลือกตัวเลขให้ถูกต้อง [0-28]${plain}"
+            sleep 2
+            show_menu
+            ;;
+    esac
 }
 
-# เรียกใช้งานเมนู
+# รันตัวติดตั้งหลักของ 3X-UI ก่อน แล้วค่อยแสดงเมนูภาษาไทย
+bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/main/install.sh)
 show_menu
