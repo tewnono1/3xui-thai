@@ -52,45 +52,54 @@ show_menu() {
 
     case $choice in
         1)
+            echo -e "${yellow}กำลังเริ่มติดตั้ง 3X-UI...${plain}"
             bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/main/install.sh)
+            echo -e "${green}ติดตั้ง 3X-UI สำเร็จเรียบร้อยแล้ว!${plain}"
+            read -p "กด Enter เพื่อกลับสู่เมนูหลัก..."
             show_menu
             ;;
         7)
-            # คำสั่งสำหรับรีเซ็ต Username & Password โดยตรง
+            echo -e "${yellow}กำลังเปิดหน้าต่างเปลี่ยนชื่อผู้ใช้และรหัสผ่าน...${plain}"
             /usr/local/x-ui/x-ui setting -username -password
-            echo -e "${green}เปลี่ยนชื่อผู้ใช้และรหัสผ่านเรียบร้อยแล้ว!${plain}"
-            sleep 2
+            echo -e "${green}ดำเนินการเสร็จสิ้น${plain}"
+            read -p "กด Enter เพื่อกลับสู่เมนูหลัก..."
             show_menu
             ;;
         12)
+            echo -e "${yellow}กำลังเริ่มการทำงาน 3X-UI...${plain}"
             systemctl start x-ui
-            echo -e "${green}เริ่มการทำงาน 3X-UI เรียบร้อยแล้ว${plain}"
-            sleep 2
+            echo -e "${green}เปิดการทำงาน 3X-UI สำเร็จ!${plain}"
+            read -p "กด Enter เพื่อกลับสู่เมนูหลัก..."
             show_menu
             ;;
         13)
+            echo -e "${yellow}กำลังหยุดการทำงาน 3X-UI...${plain}"
             systemctl stop x-ui
-            echo -e "${yellow}หยุดการทำงาน 3X-UI เรียบร้อยแล้ว${plain}"
-            sleep 2
+            echo -e "${green}หยุดการทำงาน 3X-UI สำเร็จ!${plain}"
+            read -p "กด Enter เพื่อกลับสู่เมนูหลัก..."
             show_menu
             ;;
         14)
+            echo -e "${yellow}กำลังรีสตาร์ทระบบ 3X-UI...${plain}"
             systemctl restart x-ui
-            echo -e "${green}รีสตาร์ทระบบ 3X-UI เรียบร้อยแล้ว${plain}"
-            sleep 2
+            echo -e "${green}รีสตาร์ทระบบ 3X-UI สำเร็จ!${plain}"
+            read -p "กด Enter เพื่อกลับสู่เมนูหลัก..."
             show_menu
             ;;
         16)
+            echo -e "${yellow}กำลังตรวจสอบสถานะระบบ...${plain}"
             systemctl status x-ui
-            read -p "กด Enter เพื่อกลับเข้าสู่เมนู..."
+            echo -e "${green}ตรวจสอบสถานะเสร็จสิ้น${plain}"
+            read -p "กด Enter เพื่อกลับสู่เมนูหลัก..."
             show_menu
             ;;
         0)
+            echo -e "${yellow}ออกจากสคริปต์เรียบร้อยแล้ว${plain}"
             exit 0
             ;;
         *)
-            # เมนูอื่นๆ สั่งงานผ่านระบบหลักแต่จะวนกลับมาเมนูไทยเสมอ
-            bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/main/install.sh)
+            echo -e "${red}ฟังก์ชันนี้กำลังอยู่ในระหว่างการพัฒนา...${plain}"
+            read -p "กด Enter เพื่อกลับสู่เมนูหลัก..."
             show_menu
             ;;
     esac
