@@ -53,21 +53,47 @@ show_menu() {
     case $choice in
         1)
             bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/main/install.sh)
+            show_menu
             ;;
-        2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28)
-            bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/main/install.sh)
+        7)
+            # คำสั่งสำหรับรีเซ็ต Username & Password โดยตรง
+            /usr/local/x-ui/x-ui setting -username -password
+            echo -e "${green}เปลี่ยนชื่อผู้ใช้และรหัสผ่านเรียบร้อยแล้ว!${plain}"
+            sleep 2
+            show_menu
+            ;;
+        12)
+            systemctl start x-ui
+            echo -e "${green}เริ่มการทำงาน 3X-UI เรียบร้อยแล้ว${plain}"
+            sleep 2
+            show_menu
+            ;;
+        13)
+            systemctl stop x-ui
+            echo -e "${yellow}หยุดการทำงาน 3X-UI เรียบร้อยแล้ว${plain}"
+            sleep 2
+            show_menu
+            ;;
+        14)
+            systemctl restart x-ui
+            echo -e "${green}รีสตาร์ทระบบ 3X-UI เรียบร้อยแล้ว${plain}"
+            sleep 2
+            show_menu
+            ;;
+        16)
+            systemctl status x-ui
+            read -p "กด Enter เพื่อกลับเข้าสู่เมนู..."
+            show_menu
             ;;
         0)
             exit 0
             ;;
         *)
-            echo -e "${red}กรุณาเลือกตัวเลขให้ถูกต้อง [0-28]${plain}"
-            sleep 2
+            # เมนูอื่นๆ สั่งงานผ่านระบบหลักแต่จะวนกลับมาเมนูไทยเสมอ
+            bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/main/install.sh)
             show_menu
             ;;
     esac
 }
 
-# รันตัวติดตั้งหลักของ 3X-UI ก่อน แล้วค่อยแสดงเมนูภาษาไทย
-bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/main/install.sh)
 show_menu
