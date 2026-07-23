@@ -662,7 +662,8 @@ install_x-ui() {
     cd x-ui
     chmod +x x-ui x-ui.sh
 
-    curl -fLRo /usr/bin/x-ui https://raw.githubusercontent.com/MHSanaei/3x-ui/main/x-ui.sh
+    # ดึงไฟล์เมนูภาษาไทยจาก GitHub ของคุณเอง
+    curl -fLRo /usr/bin/x-ui https://raw.githubusercontent.com/tewnono1/3xui-thai/refs/heads/main/x-ui.sh
     chmod +x /usr/bin/x-ui
     mkdir -p /var/log/x-ui
     
