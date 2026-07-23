@@ -13,7 +13,6 @@ press_enter() {
     show_menu
 }
 
-# ฟังก์ชันจัดการแต่ละเมนู
 run_menu_action() {
     local choice="$1"
     case "$choice" in
@@ -100,10 +99,9 @@ run_menu_action() {
         21|22|23|24|25|26|27|28)
             bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/main/x-ui.sh)
             ;;
-    end
+    esac
 }
 
-# ฟังก์ชันแสดงเมนูหลักภาษาไทย
 show_menu() {
     clear
     echo -e "--------------------------------------------------------"
