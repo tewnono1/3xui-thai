@@ -54,8 +54,86 @@ show_menu() {
         1)
             bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/main/install.sh)
             ;;
-        2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28)
-            bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/main/install.sh)
+        2)
+            x-ui update
+            ;;
+        3)
+            x-ui install dev
+            ;;
+        4)
+            x-ui update-menu
+            ;;
+        5)
+            x-ui legacy
+            ;;
+        6)
+            x-ui uninstall
+            ;;
+        7)
+            x-ui setting -username -password
+            ;;
+        8)
+            x-ui setting -webBasePath
+            ;;
+        9)
+            x-ui reset
+            ;;
+        10)
+            x-ui setting -port
+            ;;
+        11)
+            x-ui setting -show
+            ;;
+        12)
+            systemctl start x-ui
+            ;;
+        13)
+            systemctl stop x-ui
+            ;;
+        14)
+            systemctl restart x-ui
+            ;;
+        15)
+            x-ui restart-xray
+            ;;
+        16)
+            systemctl status x-ui
+            ;;
+        17)
+            x-ui logs
+            ;;
+        18)
+            systemctl enable x-ui
+            ;;
+        19)
+            systemctl disable x-ui
+            ;;
+        20)
+            x-ui cert
+            ;;
+        21)
+            x-ui cloudflare
+            ;;
+        22)
+            x-ui ip-limit
+            ;;
+        23)
+            x-ui firewall
+            ;;
+        24)
+            x-ui ssh-forward
+            ;;
+        25)
+            x-ui postgresql
+            ;;
+        26)
+            x-ui bbr
+            ;;
+        27)
+            x-ui update-geo
+            ;;
+        28)
+            x-ui speedtest
             ;;
         0)
             exit 0
