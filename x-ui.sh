@@ -140,6 +140,8 @@ show_menu() {
             ;;
         *)
             echo -e "${red}กรุณาเลือกตัวเลขให้ถูกต้อง [0-28]${plain}"
+            sleep 2
+            show_menu
             ;;
     esac
 }
