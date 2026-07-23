@@ -5,6 +5,32 @@ green='\033[0;32m'
 yellow='\033[0;33m'
 plain='\033[0m'
 
+# ฟังก์ชันจัดการเปลี่ยนชื่อผู้ใช้และรหัสผ่านโดยตรง
+menu_set_auth() {
+    clear
+    echo -e "--------------------------------------------------------"
+    echo -e "${green}       ★ เปลี่ยนชื่อผู้ใช้และรหัสผ่าน ★                   ${plain}"
+    echo -e "--------------------------------------------------------"
+    
+    local config_username=""
+    local config_password=""
+    
+    read -p "กรุณากรอกชื่อผู้ใช้ใหม่: " config_username
+    read -p "กรุณากรอกรหัสผ่านใหม่: " config_password
+    
+    if [[ -n "$config_username" ]] && [[ -n "$config_password" ]]; then
+        # ใช้คำสั่งภายในของ x-ui เพื่อบันทึกค่าลงฐานข้อมูลโดยตรง
+        /usr/local/x-ui/x-ui setting -username "$config_username" -password "$config_password"
+        echo -e "${green}เปลี่ยนชื่อผู้ใช้และรหัสผ่านเรียบร้อยแล้ว!${plain}"
+    else
+        echo -e "${red}ชื่อผู้ใช้หรือรหัสผ่านไม่สามารถเว้นว่างได้${plain}"
+    fi
+    
+    echo
+    read -p "กด Enter เพื่อกลับสู่เมนูหลัก..."
+    show_menu
+}
+
 # ฟังก์ชันแสดงเมนูจัดการ 3X-UI ภาษาไทย
 show_menu() {
     clear
@@ -54,8 +80,10 @@ show_menu() {
         0)
             exit 0
             ;;
-        1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28)
-            # ส่งค่าตัวเลขที่คุณเลือก ไปยังสคริปต์การทำงานจริงของระบบทันที เพื่อให้ทำงานได้ครบทุกฟังก์ชัน
+        7)
+            menu_set_auth
+            ;;
+        1|2|3|4|5|6|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28)
             bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/main/x-ui.sh) "$choice"
             ;;
         *)
